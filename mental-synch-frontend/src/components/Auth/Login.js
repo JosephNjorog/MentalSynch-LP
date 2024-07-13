@@ -1,21 +1,19 @@
-// src/components/Auth/Login.js
-
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SocialLogin from './SocialLogin';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, { email, password });
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      history.push('/dashboard');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Login failed', error);
     }

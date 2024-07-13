@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import api from '../api';
 
 const LoginForm = () => {
-  const formik = useFormik({
+  const formic = useFormik({
     initialValues: {
       email: '',
       password: '',
@@ -27,17 +27,17 @@ const LoginForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formic.handleSubmit}>
       <div>
         <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
           type="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
+          onChange={formic.handleChange}
+          value={formic.values.email}
         />
-        {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+        {formic.errors.email ? <div>{formic.errors.email}</div> : null}
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -45,13 +45,13 @@ const LoginForm = () => {
           id="password"
           name="password"
           type="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
+          onChange={formic.handleChange}
+          value={formic.values.password}
         />
-        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+        {formic.errors.password ? <div>{formic.errors.password}</div> : null}
       </div>
-      {formik.errors.api ? <div>{formik.errors.api}</div> : null}
-      <button type="submit" disabled={formik.isSubmitting}>Login</button>
+      {formic.errors.api ? <div>{formic.errors.api}</div> : null}
+      <button type="submit" disabled={formic.isSubmitting}>Login</button>
     </form>
   );
 };
